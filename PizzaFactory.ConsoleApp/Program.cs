@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PizzaFactory
+namespace PizzaFactory.ConsoleApp
 {
     class Program
     {
