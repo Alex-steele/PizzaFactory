@@ -1,29 +1,27 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
 using PizzaFactory.Core;
 
 namespace PizzaFactory.ConsoleApp.Runner
 {
     public class PizzaFactoryRunner : IPizzaFactoryRunner
     {
-        private readonly IRandomPizzaGenerator generator;
+        private readonly ILogger<PizzaFactoryRunner> logger;
+        private readonly IGeneratePizzasCommand generatePizzasCommand;
 
-        public PizzaFactoryRunner(IRandomPizzaGenerator generator)
+        public PizzaFactoryRunner(ILogger<PizzaFactoryRunner> logger, IGeneratePizzasCommand generatePizzasCommand)
         {
-            this.generator = generator;
+            this.logger = logger;
+            this.generatePizzasCommand = generatePizzasCommand;
         }
 
 
         public void Run()
         {
-            Console.WriteLine("Preparing your pizzas");
+            logger.LogInformation("Welcome to Pizza factory!");
 
-            var result = generator.GeneratePizzas(50);
+            logger.LogInformation("Preparing your pizzas");
 
-            foreach(var pizza in result)
-            {
-                Console.WriteLine($"{pizza.PizzaTopping} pizza with a {pizza.PizzaBase} base");
-            }
-
+            generatePizzasCommand.Execute(10);
         }
     }
 }

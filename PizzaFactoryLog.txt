@@ -1,0 +1,13 @@
+
+2021-05-15 17:05:05.174 +01:00 [INF] Welcome to Pizza factory!
+2021-05-15 17:05:05.198 +01:00 [INF] Preparing your pizzas
+2021-05-15 17:05:05.216 +01:00 [INF] Pepperoni pizza with a DeepPan base
+2021-05-15 17:05:05.216 +01:00 [INF] HamAndMushroom pizza with a ThinAndCrispy base
+2021-05-15 17:05:05.216 +01:00 [INF] HamAndMushroom pizza with a DeepPan base
+2021-05-15 17:05:05.216 +01:00 [INF] Pepperoni pizza with a DeepPan base
+2021-05-15 17:05:05.216 +01:00 [INF] Vegetable pizza with a DeepPan base
+2021-05-15 17:05:05.216 +01:00 [INF] Pepperoni pizza with a DeepPan base
+2021-05-15 17:05:05.216 +01:00 [INF] Pepperoni pizza with a StuffedCrust base
+2021-05-15 17:05:05.216 +01:00 [INF] Vegetable pizza with a StuffedCrust base
+2021-05-15 17:05:05.216 +01:00 [INF] Pepperoni pizza with a DeepPan base
+2021-05-15 17:05:05.216 +01:00 [INF] Vegetable pizza with a ThinAndCrispy base

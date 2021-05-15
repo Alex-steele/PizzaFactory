@@ -2,6 +2,10 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Logging.Configuration;
 using PizzaFactory.Core;
 using PizzaFactory.ConsoleApp.Runner;
 
@@ -16,8 +20,6 @@ namespace PizzaFactory.ConsoleApp
             var config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .Build();
-
-            var x = config["BaseCookingTime"];
 
             var services = new ServiceCollection();
 
