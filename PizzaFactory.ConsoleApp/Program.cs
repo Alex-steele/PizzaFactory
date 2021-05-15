@@ -2,9 +2,7 @@
 using System.IO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using PizzaFactory.ConsoleApp.Runner;
-using PizzaFactory.Core;
 using Serilog;
 
 namespace PizzaFactory.ConsoleApp
@@ -13,31 +11,30 @@ namespace PizzaFactory.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var config = BuildConfig(new ConfigurationBuilder());
-
             Console.WriteLine("Welcome to Pizza Factory! \nPlease enter the path of the file to display the pizzas:");
             var filePath = Console.ReadLine();
 
-            Log.Logger = new LoggerConfiguration()
-                .ReadFrom.Configuration(config)
-                .WriteTo.File(filePath)
-                .CreateLogger();
+            var config = BuildConfig(new ConfigurationBuilder());
 
-            var host = Host.CreateDefaultBuilder()
-                .ConfigureServices(services =>
-                {
-                    services.AddTransient<IGeneratePizzasCommand, GeneratePizzasCommand>();
-                    services.AddTransient<IPizzaFactoryRunner, PizzaFactoryRunner>();
-                    services.AddSingleton<IRandomPizzaGenerator>(_ => new RandomPizzaGenerator(int.Parse(config["BaseCookingTime"])));
-                })
-                .UseSerilog()
-                .Build();
+            SetUpLogging(config, filePath);
+
+            var host = HostBuilder.Build(config);
 
             var runner = ActivatorUtilities.CreateInstance<PizzaFactoryRunner>(host.Services);
 
-            runner.Run();
-
-            Console.ReadKey();
+            try
+            {
+                runner.Run();
+                Console.WriteLine("All done! check your file to see your pizzas.");
+            }
+            catch
+            {
+                Console.WriteLine("Something went wrong :(");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
 
         static IConfigurationRoot BuildConfig(IConfigurationBuilder builder)
@@ -45,6 +42,14 @@ namespace PizzaFactory.ConsoleApp
             return builder.SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", false, true)
                 .Build();
+        }
+
+        static void SetUpLogging(IConfigurationRoot config, string filePath)
+        {
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(config)
+                .WriteTo.File(filePath)
+                .CreateLogger();
         }
     }
 }

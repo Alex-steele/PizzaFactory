@@ -4,7 +4,7 @@ namespace PizzaFactory.Data
 {
     public class Pizza
     {
-        public Pizza(PizzaTopping pizzaTopping, PizzaBase pizzaBase, double baseCookingTime)
+        public Pizza(PizzaTopping pizzaTopping, PizzaBase pizzaBase, int baseCookingTime)
         {
             PizzaTopping = pizzaTopping;
             PizzaBase = pizzaBase;
@@ -17,21 +17,23 @@ namespace PizzaFactory.Data
 
         public PizzaBase PizzaBase { get; }
 
-        public double BaseCookingTime { get; }
+        public int BaseCookingTime { get; }
 
-        public double CookingTime { get; }
+        public int CookingTime { get; }
 
-        private double CalculateCookingTime()
+        private int CalculateCookingTime()
         {
-            double cookingTime = BaseCookingTime;
+            double cookingTimeDouble = BaseCookingTime;
 
-            cookingTime *= PizzaBase switch
+            cookingTimeDouble *= PizzaBase switch
             {
                 PizzaBase.DeepPan => 2,
                 PizzaBase.StuffedCrust => 1.5,
                 PizzaBase.ThinAndCrispy => 1,
                 _ => throw new NotImplementedException(nameof(PizzaBase)),
             };
+
+            var cookingTime = (int)cookingTimeDouble;
 
             foreach (var character in PizzaTopping.ToString())
             {

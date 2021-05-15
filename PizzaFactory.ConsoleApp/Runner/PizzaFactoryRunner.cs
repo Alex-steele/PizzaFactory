@@ -1,27 +1,36 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System;
 using PizzaFactory.Core;
 
 namespace PizzaFactory.ConsoleApp.Runner
 {
     public class PizzaFactoryRunner : IPizzaFactoryRunner
     {
-        private readonly ILogger<PizzaFactoryRunner> logger;
         private readonly IGeneratePizzasCommand generatePizzasCommand;
 
-        public PizzaFactoryRunner(ILogger<PizzaFactoryRunner> logger, IGeneratePizzasCommand generatePizzasCommand)
+        public PizzaFactoryRunner(IGeneratePizzasCommand generatePizzasCommand)
         {
-            this.logger = logger;
             this.generatePizzasCommand = generatePizzasCommand;
         }
 
 
         public void Run()
         {
-            logger.LogInformation("Welcome to Pizza factory!");
+            Console.WriteLine("Great! Now enter the amount of pizzas you would like:");
 
-            logger.LogInformation("Preparing your pizzas");
+            while (true)
+            {
+                var numberOfPizzasString = Console.ReadLine();
 
-            generatePizzasCommand.Execute(10);
+                if (int.TryParse(numberOfPizzasString, out var numberOfPizzas))
+                {
+                    generatePizzasCommand.Execute(numberOfPizzas);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("That's not a number! try again:");
+                }
+            }
         }
     }
 }

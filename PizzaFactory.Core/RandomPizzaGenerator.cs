@@ -6,9 +6,9 @@ namespace PizzaFactory.Core
 {
     public class RandomPizzaGenerator : IRandomPizzaGenerator
     {
-        private readonly double baseCookingTime;
+        private readonly int baseCookingTime;
 
-        public RandomPizzaGenerator(double baseCookingTime)
+        public RandomPizzaGenerator(int baseCookingTime)
         {
             this.baseCookingTime = baseCookingTime;
         }
