@@ -11,6 +11,7 @@ using PizzaFactory.Core.ConfigValues;
 using PizzaFactory.Core.ConfigValues.Interfaces;
 using PizzaFactory.Data.Repositories;
 using PizzaFactory.Data.ConfigValues;
+using PizzaFactory.Data.Extensions;
 
 namespace PizzaFactory.ConsoleApp
 {
@@ -30,21 +31,24 @@ namespace PizzaFactory.ConsoleApp
                     //    services.AddTransient(provider => (IPizzaTopping)ActivatorUtilities.CreateInstance(provider, topping));
                     //}
 
-                    services.AddTransient<IPizzaTopping, Pepperoni>();
-                    services.AddTransient<IPizzaTopping, Vegetable>();
-                    services.AddTransient<IPizzaTopping, HamAndMushroom>();
+                    //services.AddTransient<IPizzaTopping, Pepperoni>();
+                    //services.AddTransient<IPizzaTopping, Vegetable>();
+                    //services.AddTransient<IPizzaTopping, HamAndMushroom>();
 
-                    services.AddTransient<IPizzaBase, DeepPan>();
-                    services.AddTransient<IPizzaBase, ThinAndCrispy>();
-                    services.AddTransient<IPizzaBase, StuffedCrust>();
+                    //services.AddTransient<IPizzaBase, DeepPan>();
+                    //services.AddTransient<IPizzaBase, ThinAndCrispy>();
+                    //services.AddTransient<IPizzaBase, StuffedCrust>();
+
+                    //services.AddTransient<IPizzaRepository, PizzaRepository>();
+                    //services.AddTransient<IFilePathProvider>(_ => new FilePathProvider(config["FilePath"]));
+
+                    services.ConfigureDataServices(config);
 
                     services.AddTransient<IGeneratePizzasCommand, GeneratePizzasCommand>();
                     services.AddTransient<IPizzaFactoryRunner, PizzaFactoryRunner>();
                     services.AddTransient<IRandomPizzaGenerator, RandomPizzaGenerator>();
-                    services.AddTransient<IPizzaRepository, PizzaRepository>();
                     services.AddTransient<ICookingInterval>(_ => new FixedCookingInterval(int.Parse(config["CookingInterval"])));
                     services.AddTransient<IBaseCookingTime>(_ => new BaseCookingTime(int.Parse(config["BaseCookingTime"])));
-                    services.AddTransient<IFilePathProvider>(_ => new FilePathProvider(config["FilePath"]));
                 })
                 .UseSerilog()
                 .Build();

@@ -31,7 +31,7 @@ namespace PizzaFactory.ConsoleApp
             }
             catch(IOException ex)
             {
-                Console.WriteLine($"{ex.Message}. Please ensure it is typed correctly");
+                Console.WriteLine($"{ex.Message}. Please ensure it is typed correctly.");
             }
             catch
             {
