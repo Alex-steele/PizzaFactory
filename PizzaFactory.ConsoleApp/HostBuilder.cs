@@ -4,10 +4,12 @@ using Microsoft.Extensions.Hosting;
 using PizzaFactory.ConsoleApp.Runner;
 using PizzaFactory.Core.Commands;
 using PizzaFactory.Core.Generator;
-using PizzaFactory.Data;
 using PizzaFactory.Data.PizzaToppings;
 using Serilog;
 using PizzaFactory.Data.PizzaBases;
+using PizzaFactory.Core.ConfigValues;
+using PizzaFactory.Core.ConfigValues.Interfaces;
+using PizzaFactory.Data.Repositories;
 
 namespace PizzaFactory.ConsoleApp
 {
@@ -38,8 +40,9 @@ namespace PizzaFactory.ConsoleApp
                     services.AddTransient<IGeneratePizzasCommand, GeneratePizzasCommand>();
                     services.AddTransient<IPizzaFactoryRunner, PizzaFactoryRunner>();
                     services.AddSingleton<IRandomPizzaGenerator, RandomPizzaGenerator>();
-                    services.AddTransient<ICookingInterval>(_ => new CookingInterval(int.Parse(config["CookingInterval"])));
+                    services.AddTransient<ICookingInterval>(_ => new FixedCookingInterval(int.Parse(config["CookingInterval"])));
                     services.AddTransient<IBaseCookingTime>(_ => new BaseCookingTime(int.Parse(config["BaseCookingTime"])));
+                    services.AddTransient<IPizzaRepository, PizzaRepository>();
                 })
                 .UseSerilog()
                 .Build();

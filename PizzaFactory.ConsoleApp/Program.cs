@@ -11,12 +11,14 @@ namespace PizzaFactory.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Pizza Factory! \nPlease enter the path of the file to display the pizzas:");
+            Console.WriteLine("Welcome to Pizza Factory! \n\nPlease enter the path of the file to display the pizzas:");
             var filePath = Console.ReadLine();
 
             var config = BuildConfig(new ConfigurationBuilder());
 
-            SetUpLogging(config, filePath);
+            config["FilePath"] = filePath;
+
+            SetUpLogging(config, config["FilePath"]);
 
             var host = HostBuilder.Build(config);
 

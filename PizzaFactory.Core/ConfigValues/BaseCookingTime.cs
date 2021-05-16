@@ -1,4 +1,6 @@
-﻿namespace PizzaFactory.Data
+﻿using PizzaFactory.Core.ConfigValues.Interfaces;
+
+namespace PizzaFactory.Core.ConfigValues
 {
     public class BaseCookingTime : IBaseCookingTime
     {

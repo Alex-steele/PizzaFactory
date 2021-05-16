@@ -1,5 +1,0 @@
-2021-05-16 14:45:31.721 +01:00 [INF] Vegetable pizza with a Stuffed Crust base
-2021-05-16 14:45:33.645 +01:00 [INF] Ham and Mushroom pizza with a Thin and Crispy base
-2021-05-16 14:45:35.300 +01:00 [INF] Pepperoni pizza with a Stuffed Crust base
-2021-05-16 14:45:37.205 +01:00 [INF] Pepperoni pizza with a Deep Pan base
-2021-05-16 14:45:39.610 +01:00 [INF] Ham and Mushroom pizza with a Deep Pan base

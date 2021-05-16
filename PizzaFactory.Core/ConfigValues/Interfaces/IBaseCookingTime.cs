@@ -1,4 +1,4 @@
-﻿namespace PizzaFactory.Data
+﻿namespace PizzaFactory.Core.ConfigValues.Interfaces
 {
     public interface IBaseCookingTime
     {
