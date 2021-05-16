@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Threading;
 using Microsoft.Extensions.Logging;
+using PizzaFactory.Core.Generator;
+using PizzaFactory.Data;
 
-namespace PizzaFactory.Core
+namespace PizzaFactory.Core.Commands
 {
     public class GeneratePizzasCommand : IGeneratePizzasCommand
     {
@@ -23,7 +25,7 @@ namespace PizzaFactory.Core
 
             foreach (var pizza in result)
             {
-                Console.WriteLine($"Cooking a {pizza.PizzaTopping} pizza with a {pizza.PizzaBase} base." +
+                Console.WriteLine($"Cooking a {pizza.PizzaTopping.Name} pizza with a {pizza.PizzaBase.Name} base." +
                     $"\n This will take {pizza.CookingTime}ms");
 
                 Thread.Sleep(pizza.CookingTime);
@@ -36,8 +38,7 @@ namespace PizzaFactory.Core
 
                 Thread.Sleep(timeTillNextInterval);
 
-
-                logger.LogInformation($"{pizza.PizzaTopping} pizza with a {pizza.PizzaBase} base");
+                logger.LogInformation($"{pizza.PizzaTopping.Name} pizza with a {pizza.PizzaBase.Name} base");
             }
         }
     }

@@ -11,4 +11,8 @@
   <ItemGroup>
     <ProjectReference Include="..\PizzaFactory.Data\PizzaFactory.Data.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="Generator\" />
+  </ItemGroup>
 </Project>

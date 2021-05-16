@@ -1,38 +1,16 @@
-2021-05-15 18:27:35.929 +01:00 [INF] HamAndMushroom pizza with a DeepPan base
-2021-05-15 18:27:40.959 +01:00 [INF] HamAndMushroom pizza with a ThinAndCrispy base
-2021-05-15 18:27:45.963 +01:00 [INF] Pepperoni pizza with a DeepPan base
-2021-05-15 18:27:50.969 +01:00 [INF] Pepperoni pizza with a DeepPan base
-2021-05-15 18:27:55.976 +01:00 [INF] Vegetable pizza with a StuffedCrust base
-2021-05-15 18:28:00.982 +01:00 [INF] Vegetable pizza with a DeepPan base
-2021-05-15 18:30:25.032 +01:00 [INF] Vegetable pizza with a StuffedCrust base
-2021-05-15 18:30:30.063 +01:00 [INF] HamAndMushroom pizza with a ThinAndCrispy base
-2021-05-15 18:30:35.070 +01:00 [INF] HamAndMushroom pizza with a DeepPan base
-2021-05-15 18:30:40.079 +01:00 [INF] HamAndMushroom pizza with a StuffedCrust base
-2021-05-15 18:30:45.086 +01:00 [INF] HamAndMushroom pizza with a StuffedCrust base
-2021-05-15 18:30:50.096 +01:00 [INF] Vegetable pizza with a StuffedCrust base
-2021-05-15 18:30:55.106 +01:00 [INF] Pepperoni pizza with a ThinAndCrispy base
-2021-05-15 18:31:00.114 +01:00 [INF] Vegetable pizza with a StuffedCrust base
-2021-05-15 18:31:05.117 +01:00 [INF] Vegetable pizza with a DeepPan base
-2021-05-15 18:31:10.275 +01:00 [INF] Pepperoni pizza with a DeepPan base
-2021-05-15 19:07:03.999 +01:00 [INF] Vegetable pizza with a ThinAndCrispy base
-2021-05-15 19:07:11.900 +01:00 [INF] Vegetable pizza with a DeepPan base
-2021-05-15 19:07:16.904 +01:00 [INF] HamAndMushroom pizza with a ThinAndCrispy base
-2021-05-15 19:07:21.915 +01:00 [INF] Vegetable pizza with a StuffedCrust base
-2021-05-15 19:07:26.932 +01:00 [INF] Vegetable pizza with a DeepPan base
-2021-05-15 19:07:31.940 +01:00 [INF] Pepperoni pizza with a StuffedCrust base
-2021-05-15 19:21:59.394 +01:00 [INF] Vegetable pizza with a StuffedCrust base
-2021-05-15 19:22:01.323 +01:00 [INF] Pepperoni pizza with a DeepPan base
-2021-05-15 19:22:03.232 +01:00 [INF] Pepperoni pizza with a DeepPan base
-2021-05-15 19:22:05.136 +01:00 [INF] Pepperoni pizza with a DeepPan base
-2021-05-15 19:22:06.791 +01:00 [INF] Pepperoni pizza with a StuffedCrust base
-2021-05-15 19:22:08.195 +01:00 [INF] Vegetable pizza with a ThinAndCrispy base
-2021-05-15 19:22:10.103 +01:00 [INF] Vegetable pizza with a DeepPan base
-2021-05-15 19:22:12.006 +01:00 [INF] HamAndMushroom pizza with a ThinAndCrispy base
-2021-05-15 19:22:13.913 +01:00 [INF] HamAndMushroom pizza with a ThinAndCrispy base
-2021-05-15 19:22:15.822 +01:00 [INF] Vegetable pizza with a DeepPan base
-2021-05-15 19:22:17.225 +01:00 [INF] Vegetable pizza with a ThinAndCrispy base
-2021-05-15 19:23:08.745 +01:00 [INF] Vegetable pizza with a DeepPan base
-2021-05-15 19:23:13.773 +01:00 [INF] HamAndMushroom pizza with a StuffedCrust base
-2021-05-15 19:23:18.783 +01:00 [INF] Pepperoni pizza with a ThinAndCrispy base
-2021-05-15 19:23:23.793 +01:00 [INF] Vegetable pizza with a ThinAndCrispy base
-2021-05-15 19:23:52.529 +01:00 [INF] Pepperoni pizza with a DeepPan base
+
+2021-05-16 12:26:02.088 +01:00 [INF] Ham and Mushroom pizza with a Deep Pan base
+2021-05-16 12:26:07.111 +01:00 [INF] Pepperoni pizza with a Deep Pan base
+2021-05-16 12:26:12.118 +01:00 [INF] Pepperoni pizza with a Thin and Crispy base
+2021-05-16 12:26:17.124 +01:00 [INF] Vegetable pizza with a Thin and Crispy base
+2021-05-16 12:26:22.131 +01:00 [INF] Pepperoni pizza with a Deep Pan base
+2021-05-16 12:26:27.142 +01:00 [INF] Vegetable pizza with a Deep Pan base
+2021-05-16 12:26:32.151 +01:00 [INF] Pepperoni pizza with a Deep Pan base
+2021-05-16 12:26:37.159 +01:00 [INF] Ham and Mushroom pizza with a Thin and Crispy base
+2021-05-16 12:26:42.172 +01:00 [INF] Pepperoni pizza with a Thin and Crispy base
+2021-05-16 12:26:47.185 +01:00 [INF] Ham and Mushroom pizza with a Stuffed Crust base
+2021-05-16 12:26:52.189 +01:00 [INF] Ham and Mushroom pizza with a Thin and Crispy base
+2021-05-16 12:26:57.191 +01:00 [INF] Ham and Mushroom pizza with a Deep Pan base
+2021-05-16 12:27:02.194 +01:00 [INF] Pepperoni pizza with a Stuffed Crust base
+2021-05-16 12:27:07.205 +01:00 [INF] Vegetable pizza with a Deep Pan base
+2021-05-16 12:27:12.213 +01:00 [INF] Pepperoni pizza with a Stuffed Crust base

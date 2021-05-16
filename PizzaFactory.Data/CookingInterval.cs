@@ -1,4 +1,4 @@
-﻿namespace PizzaFactory.Core
+﻿namespace PizzaFactory.Data
 {
     public class CookingInterval : ICookingInterval
     {

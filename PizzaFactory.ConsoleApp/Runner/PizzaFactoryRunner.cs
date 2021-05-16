@@ -1,15 +1,21 @@
 ﻿using System;
-using PizzaFactory.Core;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using PizzaFactory.Core.Commands;
+using PizzaFactory.Data.PizzaToppings;
 
 namespace PizzaFactory.ConsoleApp.Runner
 {
     public class PizzaFactoryRunner : IPizzaFactoryRunner
     {
         private readonly IGeneratePizzasCommand generatePizzasCommand;
+        private readonly IEnumerable<IPizzaTopping> toppings;
 
-        public PizzaFactoryRunner(IGeneratePizzasCommand generatePizzasCommand)
+        public PizzaFactoryRunner(IGeneratePizzasCommand generatePizzasCommand, IEnumerable<IPizzaTopping> toppings)
         {
             this.generatePizzasCommand = generatePizzasCommand;
+            this.toppings = toppings;
         }
 
 

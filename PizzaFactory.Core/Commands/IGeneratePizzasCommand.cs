@@ -1,4 +1,4 @@
-﻿namespace PizzaFactory.Core
+﻿namespace PizzaFactory.Core.Commands
 {
     public interface IGeneratePizzasCommand
     {
