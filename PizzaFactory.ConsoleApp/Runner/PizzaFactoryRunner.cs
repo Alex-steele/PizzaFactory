@@ -31,7 +31,7 @@ namespace PizzaFactory.ConsoleApp.Runner
             {
                 var numberOfPizzasString = Console.ReadLine();
 
-                if (int.TryParse(numberOfPizzasString, out var numberOfPizzas))
+                if (int.TryParse(numberOfPizzasString, out var numberOfPizzas) && numberOfPizzas > 0)
                 {
                     Console.WriteLine($"\nCooking {numberOfPizzas} pizzas with a {cookingInterval.Message}\n");
 
@@ -49,7 +49,7 @@ namespace PizzaFactory.ConsoleApp.Runner
                 }
                 else
                 {
-                    Console.WriteLine("That's not a number! try again:");
+                    Console.WriteLine("Please enter a number greater than 0:");
                 }
             }
         }

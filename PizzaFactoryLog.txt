@@ -13,3 +13,5 @@ Ham and Mushroom pizza with a Stuffed Crust base
 Ham and Mushroom pizza with a Deep Pan base
 Ham and Mushroom pizza with a Deep Pan base
 Vegetable pizza with a Thin and Crispy base
+Pepperoni pizza with a Thin and Crispy base
+Ham and Mushroom pizza with a Deep Pan base

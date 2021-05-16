@@ -16,7 +16,8 @@ namespace PizzaFactory.Core.Generator
         private readonly IEnumerable<IPizzaTopping> pizzaToppings;
         private readonly ILogger<RandomPizzaGenerator> logger;
 
-        public RandomPizzaGenerator(IBaseCookingTime baseCookingTime,
+        public RandomPizzaGenerator(
+            IBaseCookingTime baseCookingTime,
             IEnumerable<IPizzaBase> pizzaBases,
             IEnumerable<IPizzaTopping> pizzaToppings,
             ILogger<RandomPizzaGenerator> logger)
@@ -27,7 +28,7 @@ namespace PizzaFactory.Core.Generator
             this.logger = logger;
         }
 
-        public IEnumerable<Pizza> GeneratePizzas(int numberOfPizzas)
+        public ICollection<Pizza> GeneratePizzas(int numberOfPizzas)
         {
             logger.LogInformation("Generating random pizzas");
 

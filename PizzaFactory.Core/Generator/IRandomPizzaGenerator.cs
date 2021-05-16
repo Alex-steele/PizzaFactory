@@ -5,6 +5,6 @@ namespace PizzaFactory.Core.Generator
 {
     public interface IRandomPizzaGenerator
     {
-        IEnumerable<Pizza> GeneratePizzas(int numberOfPizzas);
+        ICollection<Pizza> GeneratePizzas(int numberOfPizzas);
     }
 }

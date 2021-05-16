@@ -24,9 +24,9 @@ namespace PizzaFactory.Data.Repositories
             }
             catch (Exception ex)
             {
-                logger.LogError($"Saving pizza to file failed with error {ex.Message}");
+                logger.LogError($"Saving pizza to file failed with error {ex}");
 
-                throw new IOException();
+                throw new IOException($"An error occured while trying to write to the file with path name {provider.FilePath}", ex);
             }
         }
     }

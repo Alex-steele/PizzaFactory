@@ -47,7 +47,6 @@ namespace PizzaFactory.Core.Commands
                 var timeToSleep = CalculateTimeToSleep(pizza.CookingTime, cookingInterval.Interval);
 
                 Thread.Sleep(timeToSleep);
-
             }
         }
 

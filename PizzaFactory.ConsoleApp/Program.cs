@@ -29,6 +29,10 @@ namespace PizzaFactory.ConsoleApp
                 runner.Run();
                 Console.WriteLine("All done! check your file to see your pizzas.");
             }
+            catch(IOException ex)
+            {
+                Console.WriteLine($"{ex.Message}. Please ensure it is typed correctly");
+            }
             catch
             {
                 Console.WriteLine("Something went wrong :(");
