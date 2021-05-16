@@ -12,13 +12,13 @@ namespace PizzaFactory.ConsoleApp
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Pizza Factory! \n\nPlease enter the path of the file to display the pizzas:");
+
             var filePath = Console.ReadLine();
 
             var config = BuildConfig(new ConfigurationBuilder());
-
             config["FilePath"] = filePath;
 
-            SetUpLogging(config, config["LoggingPath"]);
+            SetUpLogging(config);
 
             var host = HostBuilder.Build(config);
 
@@ -31,7 +31,7 @@ namespace PizzaFactory.ConsoleApp
             }
             catch(IOException ex)
             {
-                Console.WriteLine($"{ex.Message}. Please ensure it is typed correctly.");
+                Console.WriteLine(ex.Message);
             }
             catch
             {
@@ -50,11 +50,11 @@ namespace PizzaFactory.ConsoleApp
                 .Build();
         }
 
-        static void SetUpLogging(IConfigurationRoot config, string filePath)
+        static void SetUpLogging(IConfigurationRoot config)
         {
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(config)
-                .WriteTo.File(filePath)
+                .WriteTo.File(config["LoggingPath"])
                 .CreateLogger();
         }
     }
