@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Microsoft.Extensions.Logging;
 using PizzaFactory.Core.Generator;
+using PizzaFactory.Core.Mappers;
+using PizzaFactory.Core.Models;
 using PizzaFactory.Data;
 
 namespace PizzaFactory.Core.Commands
@@ -11,35 +15,44 @@ namespace PizzaFactory.Core.Commands
         private readonly ILogger<GeneratePizzasCommand> logger;
         private readonly IRandomPizzaGenerator randomPizzaGenerator;
         private readonly ICookingInterval cookingInterval;
+        private readonly PizzaMapper mapper;
 
         public GeneratePizzasCommand(ILogger<GeneratePizzasCommand> logger, IRandomPizzaGenerator randomPizzaGenerator, ICookingInterval cookingInterval)
         {
             this.logger = logger;
             this.randomPizzaGenerator = randomPizzaGenerator;
             this.cookingInterval = cookingInterval;
+            mapper = new PizzaMapper();
         }
 
-        public void Execute(int numberOfPizzas)
+        public IEnumerable<PizzaModel> Execute(int numberOfPizzas)
         {
             var result = randomPizzaGenerator.GeneratePizzas(numberOfPizzas);
 
-            foreach (var pizza in result)
+            var pizzas = result.Select(x => mapper.Map(x));
+
+            foreach (var pizza in pizzas)
             {
-                Console.WriteLine($"Cooking a {pizza.PizzaTopping.Name} pizza with a {pizza.PizzaBase.Name} base." +
-                    $"\n This will take {pizza.CookingTime}ms");
+                yield return pizza;
 
-                Thread.Sleep(pizza.CookingTime);
+                var timeToSleep = CalculateTimeToSleep(pizza.CookingTime, cookingInterval.Interval);
 
-                Console.WriteLine("Done, waiting for next interval...");
-
-                var timeTillNextInterval = cookingInterval.Interval - pizza.CookingTime > 0
-                    ? cookingInterval.Interval - pizza.CookingTime
-                    : 0;
-
-                Thread.Sleep(timeTillNextInterval);
+                Thread.Sleep(timeToSleep);
 
                 logger.LogInformation($"{pizza.PizzaTopping.Name} pizza with a {pizza.PizzaBase.Name} base");
             }
+        }
+
+        private int CalculateTimeToSleep(int cookingTime, int interval)
+        {
+            if (interval <= 0)
+            {
+                return cookingTime;
+            }
+
+            return cookingTime < interval
+                    ? interval
+                    : cookingTime + interval - (cookingTime % interval);
         }
     }
 }

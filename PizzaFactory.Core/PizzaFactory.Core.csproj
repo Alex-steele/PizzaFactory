@@ -14,5 +14,8 @@
   <ItemGroup>
     <Folder Include="Commands\" />
     <Folder Include="Generator\" />
+    <Folder Include="Models\" />
+    <Folder Include="Mappers\" />
+    <Folder Include="ConfigValues\" />
   </ItemGroup>
 </Project>

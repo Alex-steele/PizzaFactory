@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PizzaFactory.ConsoleApp.Runner;
@@ -8,9 +7,6 @@ using PizzaFactory.Core.Generator;
 using PizzaFactory.Data;
 using PizzaFactory.Data.PizzaToppings;
 using Serilog;
-using System.Linq;
-using System.Collections.Generic;
-using System;
 using PizzaFactory.Data.PizzaBases;
 
 namespace PizzaFactory.ConsoleApp

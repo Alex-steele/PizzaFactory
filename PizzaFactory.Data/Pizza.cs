@@ -1,5 +1,4 @@
-﻿using System;
-using PizzaFactory.Data.PizzaBases;
+﻿using PizzaFactory.Data.PizzaBases;
 using PizzaFactory.Data.PizzaToppings;
 
 namespace PizzaFactory.Data
@@ -22,28 +21,6 @@ namespace PizzaFactory.Data
         public int BaseCookingTime { get; }
 
         public int CookingTime { get; }
-
-        //private int CalculateCookingTime()
-        //{
-        //    double cookingTimeDouble = BaseCookingTime;
-
-        //    cookingTimeDouble *= PizzaBase switch
-        //    {
-        //        PizzaBase.DeepPan => 2,
-        //        PizzaBase.StuffedCrust => 1.5,
-        //        PizzaBase.ThinAndCrispy => 1,
-        //        _ => throw new NotImplementedException(nameof(PizzaBase)),
-        //    };
-
-        //    var cookingTime = (int)cookingTimeDouble;
-
-        //    foreach (var character in PizzaTopping.ToString())
-        //    {
-        //        cookingTime += 100;
-        //    }
-
-        //    return cookingTime;
-        //}
 
         private int CalculateCookingTime()
         {

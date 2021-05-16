@@ -1,7 +1,10 @@
-﻿namespace PizzaFactory.Core.Commands
+﻿using System.Collections.Generic;
+using PizzaFactory.Core.Models;
+
+namespace PizzaFactory.Core.Commands
 {
     public interface IGeneratePizzasCommand
     {
-        void Execute(int numberOfPizzas);
+        IEnumerable<PizzaModel> Execute(int numberOfPizzas);
     }
 }

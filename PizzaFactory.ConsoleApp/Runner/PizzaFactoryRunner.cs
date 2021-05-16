@@ -1,23 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using PizzaFactory.Core.Commands;
-using PizzaFactory.Data.PizzaToppings;
 
 namespace PizzaFactory.ConsoleApp.Runner
 {
     public class PizzaFactoryRunner : IPizzaFactoryRunner
     {
         private readonly IGeneratePizzasCommand generatePizzasCommand;
-        private readonly IEnumerable<IPizzaTopping> toppings;
 
-        public PizzaFactoryRunner(IGeneratePizzasCommand generatePizzasCommand, IEnumerable<IPizzaTopping> toppings)
+        public PizzaFactoryRunner(IGeneratePizzasCommand generatePizzasCommand)
         {
             this.generatePizzasCommand = generatePizzasCommand;
-            this.toppings = toppings;
         }
-
 
         public void Run()
         {
@@ -29,7 +22,12 @@ namespace PizzaFactory.ConsoleApp.Runner
 
                 if (int.TryParse(numberOfPizzasString, out var numberOfPizzas))
                 {
-                    generatePizzasCommand.Execute(numberOfPizzas);
+                    var result = generatePizzasCommand.Execute(numberOfPizzas);
+
+                    foreach (var pizza in result)
+                    {
+                        Console.WriteLine($"Cooking a {pizza.PizzaTopping.Name} pizza with a {pizza.PizzaBase.Name} base...");
+                    }
                     break;
                 }
                 else
@@ -40,3 +38,4 @@ namespace PizzaFactory.ConsoleApp.Runner
         }
     }
 }
+
