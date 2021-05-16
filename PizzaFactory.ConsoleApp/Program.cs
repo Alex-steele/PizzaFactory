@@ -18,7 +18,7 @@ namespace PizzaFactory.ConsoleApp
 
             config["FilePath"] = filePath;
 
-            SetUpLogging(config, config["FilePath"]);
+            SetUpLogging(config, config["LoggingPath"]);
 
             var host = HostBuilder.Build(config);
 

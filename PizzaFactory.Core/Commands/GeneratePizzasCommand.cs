@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using Microsoft.Extensions.Logging;
 using PizzaFactory.Core.ConfigValues.Interfaces;
@@ -15,18 +14,26 @@ namespace PizzaFactory.Core.Commands
         private readonly IPizzaRepository repository;
         private readonly IRandomPizzaGenerator randomPizzaGenerator;
         private readonly ICookingInterval cookingInterval;
+        private readonly ILogger<GeneratePizzasCommand> logger;
         private readonly PizzaMapper mapper;
 
-        public GeneratePizzasCommand(IPizzaRepository repository, IRandomPizzaGenerator randomPizzaGenerator, ICookingInterval cookingInterval)
+        public GeneratePizzasCommand(
+            IPizzaRepository repository,
+            IRandomPizzaGenerator randomPizzaGenerator,
+            ICookingInterval cookingInterval,
+            ILogger<GeneratePizzasCommand> logger)
         {
             this.repository = repository;
             this.randomPizzaGenerator = randomPizzaGenerator;
             this.cookingInterval = cookingInterval;
+            this.logger = logger;
             mapper = new PizzaMapper();
         }
 
         public IEnumerable<PizzaModel> Execute(int numberOfPizzas)
         {
+            logger.LogInformation($"Calling execute in GeneratePizzasCommand with {numberOfPizzas} pizzas");
+
             var pizzas = randomPizzaGenerator.GeneratePizzas(numberOfPizzas);
 
             foreach (var pizza in pizzas)

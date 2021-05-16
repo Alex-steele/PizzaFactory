@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Extensions.Logging;
 using PizzaFactory.Core.Commands;
 using PizzaFactory.Core.ConfigValues.Interfaces;
 
@@ -8,15 +9,22 @@ namespace PizzaFactory.ConsoleApp.Runner
     {
         private readonly IGeneratePizzasCommand generatePizzasCommand;
         private readonly ICookingInterval cookingInterval;
+        private readonly ILogger<PizzaFactoryRunner> logger;
 
-        public PizzaFactoryRunner(IGeneratePizzasCommand generatePizzasCommand, ICookingInterval cookingInterval)
+        public PizzaFactoryRunner(
+            IGeneratePizzasCommand generatePizzasCommand,
+            ICookingInterval cookingInterval,
+            ILogger<PizzaFactoryRunner> logger)
         {
             this.generatePizzasCommand = generatePizzasCommand;
             this.cookingInterval = cookingInterval;
+            this.logger = logger;
         }
 
         public void Run()
         {
+            logger.LogInformation("Starting app runner");
+
             Console.WriteLine("\nGreat! Now enter the amount of pizzas you would like:");
 
             while (true)
@@ -34,6 +42,9 @@ namespace PizzaFactory.ConsoleApp.Runner
                         Console.WriteLine($"Cooking a {pizza.PizzaTopping.Name} pizza with a {pizza.PizzaBase.Name} base..." +
                             $"\n Pizza cooking time: {pizza.CookingTime}ms");
                     }
+
+                    logger.LogInformation($"Successfully added {numberOfPizzas} pizzas to file");
+
                     break;
                 }
                 else

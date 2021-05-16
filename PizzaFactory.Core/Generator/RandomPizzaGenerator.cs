@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Logging;
 using PizzaFactory.Core.ConfigValues.Interfaces;
 using PizzaFactory.Data;
 using PizzaFactory.Data.PizzaBases;
@@ -13,16 +14,23 @@ namespace PizzaFactory.Core.Generator
         private readonly IBaseCookingTime baseCookingTime;
         private readonly IEnumerable<IPizzaBase> pizzaBases;
         private readonly IEnumerable<IPizzaTopping> pizzaToppings;
+        private readonly ILogger<RandomPizzaGenerator> logger;
 
-        public RandomPizzaGenerator(IBaseCookingTime baseCookingTime, IEnumerable<IPizzaBase> pizzaBases, IEnumerable<IPizzaTopping> pizzaToppings)
+        public RandomPizzaGenerator(IBaseCookingTime baseCookingTime,
+            IEnumerable<IPizzaBase> pizzaBases,
+            IEnumerable<IPizzaTopping> pizzaToppings,
+            ILogger<RandomPizzaGenerator> logger)
         {
             this.baseCookingTime = baseCookingTime;
             this.pizzaBases = pizzaBases;
             this.pizzaToppings = pizzaToppings;
+            this.logger = logger;
         }
 
         public IEnumerable<Pizza> GeneratePizzas(int numberOfPizzas)
         {
+            logger.LogInformation("Generating random pizzas");
+
             var pizzas = new List<Pizza>();
 
             var random = new Random();
