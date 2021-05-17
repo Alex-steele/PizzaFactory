@@ -22,17 +22,7 @@ namespace PizzaFactory.Data
 
         public int CookingTime { get; }
 
-        private int CalculateCookingTime()
-        {
-            double cookingTimeDouble = BaseCookingTime;
-
-            cookingTimeDouble *= PizzaBase.Multiplier;
-
-            var cookingTime = (int)cookingTimeDouble;
-
-            cookingTime += PizzaTopping.CookingTime;
-
-            return cookingTime;
-        }
+        private int CalculateCookingTime() =>
+            (int)((BaseCookingTime * PizzaBase.Multiplier) + PizzaTopping.CookingTime);
     }
 }

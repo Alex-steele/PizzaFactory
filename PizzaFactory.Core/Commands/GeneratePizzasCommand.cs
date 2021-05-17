@@ -38,8 +38,6 @@ namespace PizzaFactory.Core.Commands
 
             foreach (var pizza in pizzas)
             {
-                repository.Add(pizza);
-
                 var pizzaModel = mapper.Map(pizza);
 
                 yield return pizzaModel;
@@ -47,6 +45,8 @@ namespace PizzaFactory.Core.Commands
                 var timeToSleep = CalculateTimeToSleep(pizza.CookingTime, cookingInterval.Interval);
 
                 Thread.Sleep(timeToSleep);
+
+                repository.Add(pizza);
             }
         }
 

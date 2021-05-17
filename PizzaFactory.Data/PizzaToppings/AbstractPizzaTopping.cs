@@ -12,14 +12,7 @@ namespace PizzaFactory.Data.PizzaToppings
         {
             var nameWithoutWhiteSpace = string.Concat(Name.Where(c => !char.IsWhiteSpace(c)));
 
-            var cookingTime = 0;
-
-            foreach (var character in nameWithoutWhiteSpace)
-            {
-                cookingTime += 100;
-            }
-
-            return cookingTime;
+            return nameWithoutWhiteSpace.Length * 100;
         }
     }
 }
