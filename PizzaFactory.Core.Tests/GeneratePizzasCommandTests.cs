@@ -54,6 +54,7 @@ namespace PizzaFactory.Core.Tests
             resultIterator.MoveNext();
             resultIterator.MoveNext();
             resultIterator.MoveNext();
+            resultIterator.MoveNext();
 
             // Assert
             A.CallTo(() => repository.Add(randomPizzas[0])).MustHaveHappenedOnceExactly();
