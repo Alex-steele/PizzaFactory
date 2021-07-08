@@ -1,6 +1,8 @@
-﻿namespace PizzaFactory.Core.ConfigValues
+﻿using PizzaFactory.Core.ConfigValues.Interfaces;
+
+namespace PizzaFactory.Core.ConfigValues
 {
-    public class DynamicCookingInterval
+    public class DynamicCookingInterval : ICookingInterval
     {
         public DynamicCookingInterval()
         {

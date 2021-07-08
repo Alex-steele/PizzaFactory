@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="PizzaBases\" />
-    <Folder Include="PizzaToppings\" />
     <Folder Include="Repositories\" />
     <Folder Include="ConfigValues\" />
     <Folder Include="Extensions\" />

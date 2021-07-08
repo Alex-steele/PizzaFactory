@@ -6,8 +6,6 @@ using PizzaFactory.Core.Commands;
 using PizzaFactory.Core.ConfigValues.Interfaces;
 using PizzaFactory.Core.Generator;
 using PizzaFactory.Data;
-using PizzaFactory.Data.PizzaBases;
-using PizzaFactory.Data.PizzaToppings;
 using PizzaFactory.Data.Repositories;
 
 namespace PizzaFactory.Core.Tests
@@ -41,9 +39,9 @@ namespace PizzaFactory.Core.Tests
 
             var randomPizzas = new List<Pizza>
             {
-                new Pizza(new Pepperoni(), new DeepPan(), baseCookingTime),
-                new Pizza(new HamAndMushroom(), new ThinAndCrispy(), baseCookingTime),
-                new Pizza(new Vegetable(), new StuffedCrust(), baseCookingTime)
+                new Pizza("Pepperoni", "DeepPan", "2", baseCookingTime),
+                new Pizza("HamAndMushroom", "ThinAndCrispy", "1", baseCookingTime),
+                new Pizza("Vegetable", "StuffedCrust", "1.5", baseCookingTime)
             };
 
             A.CallTo(() => randomPizzaGenerator.GeneratePizzas(numberOfPizzas))
@@ -72,9 +70,9 @@ namespace PizzaFactory.Core.Tests
 
             var randomPizzas = new List<Pizza>
             {
-                new Pizza(new Pepperoni(), new DeepPan(), baseCookingTime),
-                new Pizza(new HamAndMushroom(), new ThinAndCrispy(), baseCookingTime),
-                new Pizza(new Vegetable(), new StuffedCrust(), baseCookingTime)
+                new Pizza("Pepperoni", "DeepPan", "2", baseCookingTime),
+                new Pizza("HamAndMushroom", "ThinAndCrispy", "1", baseCookingTime),
+                new Pizza("Vegetable", "StuffedCrust", "1.5", baseCookingTime)
             };
 
             A.CallTo(() => randomPizzaGenerator.GeneratePizzas(numberOfPizzas))
@@ -91,16 +89,16 @@ namespace PizzaFactory.Core.Tests
 
             // Assert
             Assert.That(result1.CookingTime, Is.EqualTo(1100));
-            Assert.That(result1.PizzaBase, Is.InstanceOf(typeof(DeepPan)));
-            Assert.That(result1.PizzaTopping, Is.InstanceOf(typeof(Pepperoni)));
+            Assert.That(result1.PizzaBase, Is.EqualTo("DeepPan"));
+            Assert.That(result1.PizzaTopping, Is.EqualTo("Pepperoni"));
 
             Assert.That(result2.CookingTime, Is.EqualTo(1500));
-            Assert.That(result2.PizzaBase, Is.InstanceOf(typeof(ThinAndCrispy)));
-            Assert.That(result2.PizzaTopping, Is.InstanceOf(typeof(HamAndMushroom)));
+            Assert.That(result2.PizzaBase, Is.EqualTo("ThinAndCrispy"));
+            Assert.That(result2.PizzaTopping, Is.EqualTo("HamAndMushroom"));
 
             Assert.That(result3.CookingTime, Is.EqualTo(1050));
-            Assert.That(result3.PizzaBase, Is.InstanceOf(typeof(StuffedCrust)));
-            Assert.That(result3.PizzaTopping, Is.InstanceOf(typeof(Vegetable)));
+            Assert.That(result3.PizzaBase, Is.EqualTo("StuffedCrust"));
+            Assert.That(result3.PizzaTopping, Is.EqualTo("Vegetable"));
         }
     }
 }

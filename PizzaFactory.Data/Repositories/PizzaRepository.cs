@@ -20,7 +20,7 @@ namespace PizzaFactory.Data.Repositories
         {
             try
             {
-                File.AppendAllText(provider.FilePath, $"{pizza.PizzaTopping.Name} pizza with a {pizza.PizzaBase.Name} base\n");
+                File.AppendAllText(provider.FilePath, $"{pizza.PizzaTopping} pizza with a {pizza.PizzaBase} base\n");
             }
             catch (Exception ex)
             {

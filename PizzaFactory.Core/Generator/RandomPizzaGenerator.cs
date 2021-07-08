@@ -4,33 +4,30 @@ using System.Linq;
 using Microsoft.Extensions.Logging;
 using PizzaFactory.Core.ConfigValues.Interfaces;
 using PizzaFactory.Data;
-using PizzaFactory.Data.PizzaBases;
-using PizzaFactory.Data.PizzaToppings;
 
 namespace PizzaFactory.Core.Generator
 {
     public class RandomPizzaGenerator : IRandomPizzaGenerator
     {
-        private readonly IBaseCookingTime baseCookingTime;
-        private readonly IEnumerable<IPizzaBase> pizzaBases;
-        private readonly IEnumerable<IPizzaTopping> pizzaToppings;
+        private readonly IConfigValueProvider config;
         private readonly ILogger<RandomPizzaGenerator> logger;
 
         public RandomPizzaGenerator(
-            IBaseCookingTime baseCookingTime,
-            IEnumerable<IPizzaBase> pizzaBases,
-            IEnumerable<IPizzaTopping> pizzaToppings,
+            IConfigValueProvider config,
             ILogger<RandomPizzaGenerator> logger)
         {
-            this.baseCookingTime = baseCookingTime;
-            this.pizzaBases = pizzaBases;
-            this.pizzaToppings = pizzaToppings;
+            this.config = config;
             this.logger = logger;
         }
+
 
         public ICollection<Pizza> GeneratePizzas(int numberOfPizzas)
         {
             logger.LogInformation("Generating random pizzas");
+
+            var pizzaToppings = config.PizzaToppings;
+
+            var pizzaBasesWithMultipliers = config.PizzaBasesWithMultipliers;
 
             var pizzas = new List<Pizza>();
 
@@ -40,9 +37,13 @@ namespace PizzaFactory.Core.Generator
             {
                 var randomTopping = pizzaToppings.ElementAt(random.Next(pizzaToppings.Count()));
 
-                var randomBase = pizzaBases.ElementAt(random.Next(pizzaBases.Count()));
+                var randomBase = pizzaBasesWithMultipliers.ElementAt(random.Next(pizzaBasesWithMultipliers.Count()));
 
-                pizzas.Add(new Pizza(randomTopping, randomBase, baseCookingTime.Time));
+                var randomBaseName = randomBase.Key;
+
+                var randomBaseMultiplier = randomBase.Value;
+
+                pizzas.Add(new Pizza(randomTopping, randomBaseName, randomBaseMultiplier, config.BaseCookingTime));
             }
 
             return pizzas;

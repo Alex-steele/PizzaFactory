@@ -1,41 +1,49 @@
-﻿using System.Collections.Generic;
-using FakeItEasy;
+﻿using FakeItEasy;
 using Microsoft.Extensions.Logging;
 using NUnit.Framework;
-using PizzaFactory.Core.ConfigValues.Interfaces;
 using PizzaFactory.Core.Generator;
-using PizzaFactory.Data.PizzaBases;
-using PizzaFactory.Data.PizzaToppings;
+using PizzaFactory.Core.ConfigValues.Interfaces;
+using System.Collections.Generic;
 
 namespace PizzaFactory.Core.Tests
 {
     public class RandomPizzaGeneratorTests
     {
-
         [Test]
         public void GeneratePizzas_ReturnsCorrectNumberOfPizzas()
         {
             // Arrange
-            var baseCookingTime = A.Fake<IBaseCookingTime>();
-            var logger  = A.Fake<ILogger<RandomPizzaGenerator>>();
+            var logger = A.Fake<ILogger<RandomPizzaGenerator>>();
+            var config = A.Fake<IConfigValueProvider>();
+
+            var PizzaToppings = new List<string>
+            {
+                "Pepperoni",
+                "HamAndMushroom",
+                "Vegetable"
+            };
+
+            var PizzaBasesWithMultipliers = new Dictionary<string, string>
+            {
+                { "DeepPan", "2" },
+                { "StuffedCrust", "1.5" },
+                { "ThinAndCrispy", "1" },
+            };
+
+            var baseCookingTime = 200;
+
+            A.CallTo(() => config.PizzaToppings)
+                .Returns(PizzaToppings);
+
+            A.CallTo(() => config.PizzaBasesWithMultipliers)
+                .Returns(PizzaBasesWithMultipliers);
+
+            A.CallTo(() => config.BaseCookingTime)
+                .Returns(baseCookingTime);
 
             const int amountOfPizzas = 3;
 
-            var pizzaBases = new List<IPizzaBase>
-            {
-                new DeepPan(),
-                new StuffedCrust(),
-                new ThinAndCrispy()
-            };
-
-            var pizzaToppings = new List<IPizzaTopping>
-            {
-                new Pepperoni(),
-                new HamAndMushroom(),
-                new Vegetable()
-            };
-
-            var generator = new RandomPizzaGenerator(baseCookingTime, pizzaBases, pizzaToppings, logger);
+            var generator = new RandomPizzaGenerator(config, logger);
 
             // Act
             var result = generator.GeneratePizzas(amountOfPizzas);

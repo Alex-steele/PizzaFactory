@@ -22,9 +22,10 @@ namespace PizzaFactory.ConsoleApp
 
                     services.AddTransient<IGeneratePizzasCommand, GeneratePizzasCommand>();
                     services.AddTransient<IPizzaFactoryRunner, PizzaFactoryRunner>();
-                    services.AddTransient<IRandomPizzaGenerator, RandomPizzaGenerator>();
                     services.AddTransient<ICookingInterval>(_ => new FixedCookingInterval(int.Parse(config["CookingInterval"])));
-                    services.AddTransient<IBaseCookingTime>(_ => new BaseCookingTime(int.Parse(config["BaseCookingTime"])));
+                    services.AddTransient<IConfigValueProvider, ConfigValueProvider>();
+
+                    services.AddTransient<IRandomPizzaGenerator, RandomPizzaGenerator>();
                 })
                 .UseSerilog()
                 .Build();

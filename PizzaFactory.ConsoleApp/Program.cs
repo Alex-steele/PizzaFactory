@@ -11,9 +11,21 @@ namespace PizzaFactory.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Pizza Factory! \n\nPlease enter the path of the file to display the pizzas:");
+            Console.WriteLine("Welcome to Pizza Factory! \n\nPlease enter the path of a .txt file to display the pizzas:");
 
-            var filePath = Console.ReadLine();
+            string filePath;
+
+            while(true)
+            {
+                filePath = Console.ReadLine();
+
+                if(filePath.EndsWith(".txt"))
+                {
+                    break;
+                }
+
+                Console.WriteLine("Please enter the path of a .txt file");
+            }
 
             var config = BuildConfig(new ConfigurationBuilder());
             config["FilePath"] = filePath;

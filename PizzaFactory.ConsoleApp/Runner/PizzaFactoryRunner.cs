@@ -39,7 +39,7 @@ namespace PizzaFactory.ConsoleApp.Runner
 
                     foreach (var pizza in result)
                     {
-                        Console.WriteLine($"Cooking a {pizza.PizzaTopping.Name} pizza with a {pizza.PizzaBase.Name} base..." +
+                        Console.WriteLine($"Cooking a {pizza.PizzaTopping} pizza with a {pizza.PizzaBase} base..." +
                             $"\n Pizza cooking time: {pizza.CookingTime}ms");
                     }
 

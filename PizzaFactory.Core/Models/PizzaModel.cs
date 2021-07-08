@@ -1,13 +1,10 @@
-﻿using PizzaFactory.Data.PizzaBases;
-using PizzaFactory.Data.PizzaToppings;
-
-namespace PizzaFactory.Core.Models
+﻿namespace PizzaFactory.Core.Models
 {
     public class PizzaModel
     {
         public PizzaModel(
-            IPizzaTopping pizzaTopping,
-            IPizzaBase pizzaBase,
+            string pizzaTopping,
+            string pizzaBase,
             int baseCookingTime,
             int cookingTime)
         {
@@ -17,9 +14,9 @@ namespace PizzaFactory.Core.Models
             CookingTime = cookingTime;
         }
 
-        public IPizzaTopping PizzaTopping { get; }
+        public string PizzaTopping { get; }
 
-        public IPizzaBase PizzaBase { get; }
+        public string PizzaBase { get; }
 
         public int BaseCookingTime { get; }
 

@@ -1,28 +1,31 @@
-﻿using PizzaFactory.Data.PizzaBases;
-using PizzaFactory.Data.PizzaToppings;
+﻿using System.Linq;
+
 
 namespace PizzaFactory.Data
 {
     public class Pizza
     {
-        public Pizza(IPizzaTopping pizzaTopping, IPizzaBase pizzaBase, int baseCookingTime)
+        public Pizza(string pizzaTopping, string pizzaBase, string pizzaBaseMultiplier, int baseCookingTime)
         {
             PizzaTopping = pizzaTopping;
             PizzaBase = pizzaBase;
+            PizzaBaseMultiplier = double.Parse(pizzaBaseMultiplier);
             BaseCookingTime = baseCookingTime;
 
             CookingTime = CalculateCookingTime();
         }
 
-        public IPizzaTopping PizzaTopping { get; }
+        public string PizzaTopping { get; }
 
-        public IPizzaBase PizzaBase { get; }
+        public string PizzaBase { get; }
+
+        public double PizzaBaseMultiplier { get; }
 
         public int BaseCookingTime { get; }
 
         public int CookingTime { get; }
 
         private int CalculateCookingTime() =>
-            (int)((BaseCookingTime * PizzaBase.Multiplier) + PizzaTopping.CookingTime);
+            (int)((BaseCookingTime * PizzaBaseMultiplier) + (string.Concat(PizzaTopping.Where(c => char.IsLetter(c))).Length * 100));
     }
 }
